@@ -10,6 +10,7 @@ import { LocalService } from '../services/local.service';
 import { jwtFactory } from './jwt-options';
 import { error } from 'console';
 import { errorInterceptor } from '../inceptors/errorHandling.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
@@ -20,7 +21,6 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom([
       FormsModule,
       RouterModule,
-      HttpClientModule,
       BrowserModule,
       JwtModule.forRoot({
         jwtOptionsProvider: {

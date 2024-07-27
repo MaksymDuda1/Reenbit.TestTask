@@ -10,3 +10,4 @@
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/obj/Debug/net8.0/refint/Chatter.Domain.dll
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/obj/Debug/net8.0/Chatter.Domain.pdb
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/obj/Debug/net8.0/ref/Chatter.Domain.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/obj/Debug/net8.0/Chatter.Domain.sourcelink.json

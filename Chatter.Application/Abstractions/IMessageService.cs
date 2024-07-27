@@ -7,5 +7,5 @@ public interface IMessageService
 {
     Task<List<MessageDto>> LoadMessages();
 
-    Task SaveMessage(UserMessage userMessage);
+    Task SaveMessage(MessageDto userMessage);
 }

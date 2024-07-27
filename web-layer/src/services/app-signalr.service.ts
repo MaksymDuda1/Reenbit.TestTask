@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as signalR from '@microsoft/signalr';
+import { MessageModel } from '../models/message.model';
+import { Sentiment } from '../enums/sentiment';
 
 
 @Injectable({
@@ -18,32 +20,58 @@ export class AppSignalrService {
   public users: string[] = [];
 
   constructor() {
-  
-    this.hubConnection.on("ReceiveMessage", (user: string, message: string, messageTime: string) => {
-      this.messages = [...this.messages, { user, message, messageTime }];
-      this.messages$.next(this.messages);
-    });
 
-    this.hubConnection.on("ReceiveConnectedUsers", (users: any) => {
-      this.connectedUsers$.next(users);
-    });
+    this.onMessageReceive();
 
-    this.hubConnection.on("LoadMessages", (loadedMessages: any[]) => {
-      const newMessages = loadedMessages.map(msg => ({
-        user: msg.userId,
-        message: msg.text,
-        messageTime: msg.time
-      }))
-      this.messages = [...this.messages, ...newMessages];
-      this.messages$.next(this.messages);
-    })
+    this.onReceiveConnectedUsers();
 
+    this.onLoadMessages();
 
-    this.hubConnection.on("UserJoined", (user: string, message: string) => {
-      this.messages = [...this.messages, { user, message }];
+    this.onUserJoined();
+  }
+
+  onUserJoined() {
+    this.hubConnection.on("UserJoined", (message: MessageModel) => {
+      this.messages = [...this.messages, message];
       this.messages$.next(this.messages);
     })
   }
+
+  onLoadMessages(): void {
+    this.hubConnection.on("LoadMessages", (loadedMessages: MessageModel[]) => {
+      const newMessages = loadedMessages.map(m => ({
+        text: m.text,
+        time: m.time,
+        sentiment: m.sentiment,
+        userId: m.userId,
+        user: m.user
+      }));
+      this.messages = [...this.messages, ...newMessages];
+      this.messages$.next(this.messages);
+    });
+  }
+
+  onReceiveConnectedUsers() {
+    this.hubConnection.on("ReceiveConnectedUsers", (users: any) => {
+      this.connectedUsers$.next(users);
+    });
+  }
+
+  onMessageReceive() {
+    this.hubConnection.on("ReceiveMessage", (message: MessageModel) => {
+      const newMessage = new MessageModel();
+        newMessage.text = message.text,
+        newMessage.sentiment = message.sentiment,
+        newMessage.time = message.time,
+        newMessage.userId = message.userId
+        newMessage.user = message.user
+
+      this.messages = [...this.messages, newMessage];
+      this.messages$.next(this.messages);
+    });
+  };
+
+
   public async startConnection() {
     try {
       await this.hubConnection.start()
@@ -51,17 +79,17 @@ export class AppSignalrService {
       console.log(error);
     }
   }
+
   public async joinRoom(user: string) {
     await this.hubConnection.start()
     return this.hubConnection.invoke("JoinChat", user);
   }
+
   public async sendMessage(message: string) {
     this.hubConnection.invoke('SendMessage', message);
   }
+
   public async leaveChat() {
     return this.hubConnection.stop();
-  }
-  getConnectedUsers() {
-    this.hubConnection.invoke("GetConnectedUsers").catch(err => console.error(err));
   }
 }

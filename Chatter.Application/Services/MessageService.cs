@@ -16,20 +16,13 @@ public class MessageService(
         var messages = await unitOfWork.Messages
             .GetAllAsync(m => m.User);
 
-        return messages.Select(mapper.Map<MessageDto>).ToList();
+        var mapped = messages.Select(mapper.Map<MessageDto>).ToList();
+        return mapped;
     }
 
-    public async Task SaveMessage(UserMessage userMessage)
+    public async Task SaveMessage(MessageDto userMessage)
     {
-        var message = new Message()
-        {
-            Text = userMessage.Message.Text,
-            Time = userMessage.Message.Time.ToUniversalTime(),
-            UserId = userMessage.UserId
-            
-        };
-        
-        await unitOfWork.Messages.InsertAsync(mapper.Map<Message>(message));
+        await unitOfWork.Messages.InsertAsync(mapper.Map<Message>(userMessage));
         await unitOfWork.SaveAsync();
     }
 }

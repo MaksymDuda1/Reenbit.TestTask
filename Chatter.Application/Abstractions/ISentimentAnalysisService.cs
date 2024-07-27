@@ -1,8 +1,9 @@
 using Azure.AI.TextAnalytics;
+using Chatter.Domain.Enums;
 
 namespace Chatter.Application.Abstractions;
 
 public interface ISentimentAnalysisService
 {
-    TextSentiment AnalyzeTheMessage(string message);
-}
+    Sentiment AnalyzeTheMessage(string message);
+} 

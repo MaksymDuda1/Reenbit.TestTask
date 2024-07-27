@@ -7,7 +7,8 @@ namespace Chatter.API.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public class AuthorizationController(IAuthorizationService authorizationService) : ControllerBase
+public class AuthorizationController(IAuthorizationService authorizationService, IMessageService messageService)
+    : ControllerBase
 {
     [HttpPost("login")]
     public async Task<ActionResult<TokenApiModel>> Login(LoginDto request)
@@ -24,7 +25,7 @@ public class AuthorizationController(IAuthorizationService authorizationService)
     [HttpGet]
     public async Task<IActionResult> Logout()
     {
-        await authorizationService.Logout();
-        return NoContent();
+        var messages = await messageService.LoadMessages();
+        return Ok(messages);
     }
 }

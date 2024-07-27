@@ -1,6 +1,7 @@
 using Azure;
 using Azure.AI.TextAnalytics;
 using Chatter.Application.Abstractions;
+using Chatter.Domain.Enums;
 
 namespace Chatter.Application.Services;
 
@@ -14,7 +15,7 @@ public class SentimentAnalysisService : ISentimentAnalysisService
     private static readonly AzureKeyCredential credentials = new AzureKeyCredential(languageKey);
     private static readonly Uri endpoint = new Uri(languageEndpoint);
 
-    public TextSentiment AnalyzeTheMessage(string message)
+    public Sentiment AnalyzeTheMessage(string message)
     {
         var client = new TextAnalyticsClient(endpoint, credentials);
         var documents = new List<string> { message };
@@ -23,8 +24,15 @@ public class SentimentAnalysisService : ISentimentAnalysisService
             documents,
             options: new AnalyzeSentimentOptions { IncludeOpinionMining = true });
 
-        var result = reviews.FirstOrDefault()?.DocumentSentiment.Sentiment ?? TextSentiment.Mixed;
-        Console.WriteLine(result);
-        return result;
+        var result = reviews.FirstOrDefault()?.DocumentSentiment.Sentiment;
+
+        return result switch
+        {
+            TextSentiment.Negative => Sentiment.Negative,
+            TextSentiment.Positive => Sentiment.Positive,
+            TextSentiment.Neutral => Sentiment.Neutral,
+            TextSentiment.Mixed => Sentiment.Mixed,
+            _ => Sentiment.Mixed
+        };
     }
 }

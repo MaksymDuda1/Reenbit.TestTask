@@ -15,8 +15,9 @@ import { LocalService } from '../../services/local.service';
 })
 
 export class RegistrationComponent {
-  constructor(private authService: AuthService,
-    private localService: LocalService){} 
+  constructor(
+    private authService: AuthService,
+    private localService: LocalService) { }
 
   registrationModel: RegistrationModel = new RegistrationModel();
   errorMessage: string = "";

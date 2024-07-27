@@ -13,3 +13,4 @@
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/Debug/net8.0/refint/Chatter.Infrastructure.dll
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/Debug/net8.0/Chatter.Infrastructure.pdb
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/Debug/net8.0/ref/Chatter.Infrastructure.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/Debug/net8.0/Chatter.Infrastructure.sourcelink.json

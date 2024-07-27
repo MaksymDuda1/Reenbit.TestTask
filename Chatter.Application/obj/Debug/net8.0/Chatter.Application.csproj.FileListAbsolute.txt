@@ -13,3 +13,4 @@
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Debug/net8.0/refint/Chatter.Application.dll
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Debug/net8.0/Chatter.Application.pdb
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Debug/net8.0/ref/Chatter.Application.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Debug/net8.0/Chatter.Application.sourcelink.json

@@ -1,6 +1,8 @@
 using Chatter.Application.Abstractions;
 using Chatter.Application.Models;
+using Chatter.Domain.Dtos;
 using Chatter.Domain.Entities;
+using Chatter.Domain.Enums;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Azure.SignalR.Management;
 
@@ -10,25 +12,26 @@ public class ChatHub : Hub
 {
     private readonly IServiceManager serviceManager;
     private readonly IConfiguration configuration;
-    private readonly IServiceHubContext serviceHubContext;
     private readonly IDictionary<string, string> connectedUsers;
     private readonly IMessageService messageService;
     private readonly ISentimentAnalysisService sentimentAnalysisService;
+    private readonly IUserService userService;
 
     public ChatHub(
         IConfiguration configuration,
         IDictionary<string, string> connectedUsers,
-        IMessageService messageService, ISentimentAnalysisService sentimentAnalysisService)
+        IMessageService messageService,
+        ISentimentAnalysisService sentimentAnalysisService,
+        IUserService userService)
     {
         this.configuration = configuration;
         this.connectedUsers = connectedUsers;
         this.messageService = messageService;
         this.sentimentAnalysisService = sentimentAnalysisService;
+        this.userService = userService;
         serviceManager = new ServiceManagerBuilder()
             .WithOptions(option => { option.ConnectionString = this.configuration["AzureSignalR:ConnectionString"]; })
             .Build();
-
-        serviceHubContext = serviceManager.CreateHubContextAsync("ChatHub").Result;
     }
 
     public async Task JoinChat(string userId)
@@ -39,33 +42,40 @@ public class ChatHub : Hub
             await GetConnectedUsers();
             var loadedMessages = await messageService.LoadMessages();
             await Clients.Caller.SendAsync("LoadMessages", loadedMessages);
-            await Clients.All.SendAsync("UserJoined", "Chat bot", $"{userId} just joined our room");
+            
+            var botMessage = new MessageDto()
+            {
+                Text = $"{userId} just joined our room",
+                Time = DateTime.Now,
+                Sentiment = Sentiment.Neutral,
+                UserId = Guid.Empty,
+                User = new UserDto(){UserName = "Chat bot"}
+            };
+            
+            await Clients.All.SendAsync("UserJoined", botMessage);
         }
     }
 
     public async Task SendMessage(string message)
     {
         string connectionId = Context.ConnectionId;
-
+        
         if (connectedUsers.TryGetValue(connectionId, out string userId))
         {
-            await Clients.All.SendAsync("ReceiveMessage", userId, message, DateTime.Now);
-        }
-
-        var sentiment = sentimentAnalysisService.AnalyzeTheMessage(message);
-
-        var userMessage = new UserMessage()
-        {
-            UserId = Guid.Parse(userId),
-            Message = new Message
+            var sentiment = sentimentAnalysisService.AnalyzeTheMessage(message);
+            var parsedUserId = Guid.Parse(userId);
+            var userMessage = new MessageDto()
             {
                 Text = message,
-                Time = DateTime.Now,
-                Sentiment = sentiment
-            }
-        };
-
-        await messageService.SaveMessage(userMessage);
+                Time = DateTime.Now.ToUniversalTime(),
+                Sentiment = sentiment,
+                UserId = parsedUserId,
+                User = await userService.GetUserById(parsedUserId)
+            };
+            
+            await Clients.All.SendAsync("ReceiveMessage", userMessage);
+            await messageService.SaveMessage(userMessage);
+        }
     }
 
     public override async Task OnDisconnectedAsync(Exception ex)
@@ -73,7 +83,16 @@ public class ChatHub : Hub
         string connectionId = Context.ConnectionId;
         if (connectedUsers.Remove(connectionId, out string userId))
         {
-            await Clients.All.SendAsync("ReceiveMessage", "Chat bot", $"{userId} has left the chat", DateTime.Now);
+            var botMessage = new MessageDto()
+            {
+                Text = $"{userId} has left the chat",
+                Time = DateTime.Now,
+                Sentiment = Sentiment.Neutral,
+                UserId = Guid.Empty,
+                User = new UserDto(){UserName = "Chat bot"}
+            };
+            
+            await Clients.All.SendAsync("ReceiveMessage", botMessage);
             await GetConnectedUsers();
         }
 
@@ -85,11 +104,5 @@ public class ChatHub : Hub
     {
         var users = connectedUsers.Values.ToList();
         await Clients.All.SendAsync("ReceiveConnectedUsers", users);
-    }
-
-    public async Task DisconnectClient(string connectionId)
-    {
-        await serviceHubContext.Clients.Client(connectionId).SendAsync("Disconnect");
-        Console.WriteLine($"Disconnected client: {connectionId}");
     }
 }

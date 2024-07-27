@@ -16,7 +16,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 
 export class LoginComponent {
-  constructor(private authService: AuthService,
+  constructor(
+    private authService: AuthService,
     private localService: LocalService,
     private jwtHelperService: JwtHelperService
   ) { }

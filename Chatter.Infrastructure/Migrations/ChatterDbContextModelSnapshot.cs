@@ -45,7 +45,7 @@ namespace Chatter.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
                 });
 
             modelBuilder.Entity("Chatter.Domain.Entities.Role", b =>
@@ -77,13 +77,13 @@ namespace Chatter.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cac3f521-a571-45c9-8097-c129318bb10e"),
+                            Id = new Guid("66141e1d-5094-44c3-931f-745280a5ac07"),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("1a45d953-2e14-4ab8-97ca-6e247c8dbd6d"),
+                            Id = new Guid("4bb00539-2302-4085-8e14-42c0e6ed6d1e"),
                             Name = "User",
                             NormalizedName = "USER"
                         });

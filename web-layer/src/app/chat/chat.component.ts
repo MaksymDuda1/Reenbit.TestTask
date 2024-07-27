@@ -1,11 +1,11 @@
 import { AfterViewChecked, Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
 import { AppSignalrService } from '../../services/app-signalr.service';
-import { subscribe } from 'node:diagnostics_channel';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LocalService } from '../../services/local.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MessageModel } from '../../models/message.model';
 @Component({
   selector: 'app-chat',
   standalone: true,
@@ -25,13 +25,17 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       this.loggedInUserName = decodedData.nameid;
     }
   }
+
   errorMessage = "";
   inputedMessage = "";
   receivedMessage: string = '';
   users: any[] = [];
-  messages: any[] = [];
+  messages: MessageModel[] = [];
   loggedInUserName = "";
+  isLoading = true;
+
   @ViewChild('scroll') private scrollContainer!: ElementRef;
+
   sendMessage() {
     if (this.inputedMessage != "") {
       this.signalRService.sendMessage(this.inputedMessage)
@@ -42,33 +46,38 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         });
     }
   }
+
   leaveChat() {
     this.signalRService.leaveChat()
       .then(() => {
         this.router.navigate(["home"])
       }).catch((err) => {
         console.log(err);
-      })
+      });
   }
+
+  private subscribeToSignalR(): void {
+    this.signalRService.messages$.subscribe(data => this.messages = data);
+    this.signalRService.connectedUsers$.subscribe(data => this.users = data);
+  }
+
   ngAfterViewChecked(): void {
     this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
   }
+
   ngOnInit(): void {
-    let token = this.localService.get(LocalService.AuthTokenName);
+    const token = this.localService.get(LocalService.AuthTokenName);
     if (token) {
-      var decodedData = this.jwtHelperService.decodeToken(token);
-      let user = decodedData.nameid;
+      const decodedData = this.jwtHelperService.decodeToken(token);
+      const user = decodedData.nameid;
       this.signalRService.joinRoom(user)
         .then(() => {
-          this.signalRService.messages$.subscribe(data => {
-            this.messages = data;
-          });
-          this.signalRService.connectedUsers$.subscribe(data => {
-            this.users = data;
-          })
-        }).catch((error: any) => {
-          this.errorMessage = error;
-        });
+          this.subscribeToSignalR();
+          this.isLoading = false;
+        })
+    } else {
+      this.errorMessage = "No valid token found. Please log in.";
+      this.isLoading = false;
     }
   }
 }

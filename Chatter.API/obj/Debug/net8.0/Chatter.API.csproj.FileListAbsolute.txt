@@ -143,3 +143,4 @@
 /home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Debug/net8.0/Chatter.Infrastructure.pdb
 /home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Debug/net8.0/Chatter.Domain.pdb
 /home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Debug/net8.0/Azure.AI.TextAnalytics.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/obj/Debug/net8.0/Chatter.API.sourcelink.json
