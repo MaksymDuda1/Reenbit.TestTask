@@ -1,0 +1,320 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/maksi/Studying/Reenbit.TestTask/Chatter.API/Chatter.API.csproj": {}
+  },
+  "projects": {
+    "/home/maksi/Studying/Reenbit.TestTask/Chatter.API/Chatter.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/maksi/Studying/Reenbit.TestTask/Chatter.API/Chatter.API.csproj",
+        "projectName": "Chatter.API",
+        "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.API/Chatter.API.csproj",
+        "packagesPath": "/home/maksi/.nuget/packages/",
+        "outputPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.API/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/maksi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/Chatter.Application.csproj": {
+                "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/Chatter.Application.csproj"
+              },
+              "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj": {
+                "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.Azure.SignalR": {
+              "target": "Package",
+              "version": "[1.26.0, )"
+            },
+            "Microsoft.Azure.SignalR.Management": {
+              "target": "Package",
+              "version": "[1.26.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/Chatter.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/Chatter.Application.csproj",
+        "projectName": "Chatter.Application",
+        "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/Chatter.Application.csproj",
+        "packagesPath": "/home/maksi/.nuget/packages/",
+        "outputPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/maksi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj": {
+                "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Azure.AI.TextAnalytics": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj",
+        "projectName": "Chatter.Domain",
+        "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj",
+        "packagesPath": "/home/maksi/.nuget/packages/",
+        "outputPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/maksi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Azure.AI.TextAnalytics": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj",
+        "projectName": "Chatter.Infrastructure",
+        "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj",
+        "packagesPath": "/home/maksi/.nuget/packages/",
+        "outputPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/maksi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj": {
+                "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
