@@ -4,6 +4,7 @@ import { LoginModel } from "../models/login.model";
 import { RegistrationModel } from "../models/registration.model";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { environment } from "../environments/environment";
 
 @Injectable({providedIn: "root"})
 export class AuthService{
@@ -11,13 +12,13 @@ export class AuthService{
 
     }
 
-    private path: string = "api/auth";
+    private path: string = `${environment.url}/api/auth`;
 
     login(loginModel: LoginModel): Observable<any> {
-        return this.client.post<any>(this.path + "/login", loginModel);
+        return this.client.post<any>(`${this.path}/login`, loginModel);
     }
 
     registration(registrationModel: RegistrationModel) : Observable<any>{
-        return this.client.post<any>(this.path + "/registration", registrationModel);    
+        return this.client.post<any>(`${this.path}/registration`, registrationModel);    
     }
 }

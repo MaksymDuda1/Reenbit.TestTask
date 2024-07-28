@@ -16,6 +16,6 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.UserName, opt
                 => opt.MapFrom(src => src.UserName))
             .ForMember(dest => dest.PhotoPath, opt
-                => opt.MapFrom(src => src.PhotoPath));
+                => opt.MapFrom(src => src.PhotoPath)).ReverseMap();
     }
 }

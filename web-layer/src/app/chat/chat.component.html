@@ -34,12 +34,12 @@
               [ngClass]="{'outgoing': message.userId === loggedInUserName, 'incoming': message.userId !== loggedInUserName}">
               <div class="message-avatar"
                 *ngIf="message.userId !== loggedInUserName && (i === 0 || messages[i-1].userId !== message.userId)">
-                <img src="https://pretutorials.com/images/user-profile.png" alt="">
+                <img src="https://ptetutorials.com/images/user-profile.png" alt="">
               </div>
               <div class="message-content-wrapper">
                 <div class="message-content">
                   <p>{{message.text}}</p>
-                  <span class="time_date">{{ message.user.userName}} | {{message.time | date: "medium"}}</span>
+                  <span class="time_date">{{ message.user.userName}} | {{message.time | date: "medium"}} | {{message.sentiment}}</span>
                 </div>
               </div>
             </div>

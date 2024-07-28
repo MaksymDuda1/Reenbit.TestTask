@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import * as signalR from '@microsoft/signalr';
 import { MessageModel } from '../models/message.model';
 import { Sentiment } from '../enums/sentiment';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Sentiment } from '../enums/sentiment';
 })
 export class AppSignalrService {
   public hubConnection = new signalR.HubConnectionBuilder()
-    .withUrl('http://localhost:8000/chat')
+    .withUrl(`${environment.url}/chat`)
     .configureLogging(signalR.LogLevel.Information)
     .build();
 

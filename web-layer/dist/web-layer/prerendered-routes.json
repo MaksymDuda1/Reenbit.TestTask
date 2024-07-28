@@ -1,0 +1,8 @@
+{
+  "routes": [
+    "/chat",
+    "/home",
+    "/login",
+    "/registration"
+  ]
+}

@@ -1,0 +1,16 @@
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/bin/Release/net8.0/Chatter.Application.deps.json
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/bin/Release/net8.0/Chatter.Application.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/bin/Release/net8.0/Chatter.Application.pdb
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/bin/Release/net8.0/Chatter.Domain.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/bin/Release/net8.0/Chatter.Domain.pdb
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.csproj.AssemblyReference.cache
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.AssemblyInfoInputs.cache
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.AssemblyInfo.cs
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.csproj.CoreCompileInputs.cache
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.sourcelink.json
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.csproj.CopyComplete
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/refint/Chatter.Application.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/Chatter.Application.pdb
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Application/obj/Release/net8.0/ref/Chatter.Application.dll

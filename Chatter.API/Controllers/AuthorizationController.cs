@@ -22,4 +22,10 @@ public class AuthorizationController(IAuthorizationService authorizationService,
     {
         return Ok(await authorizationService.Registration(request));
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetMessages()
+    {
+        return Ok(await messageService.LoadMessages());
+    }
 }

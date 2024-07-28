@@ -21,7 +21,15 @@ public class MessageService(
 
     public async Task SaveMessage(MessageDto userMessage)
     {
-        await unitOfWork.Messages.InsertAsync(mapper.Map<Message>(userMessage));
+        var message = new Message()
+        {
+            Text = userMessage.Text,
+            Sentiment = userMessage.Sentiment,
+            Time = userMessage.Time,
+            UserId = userMessage.UserId
+        };
+
+        await unitOfWork.Messages.InsertAsync(message);
         await unitOfWork.SaveAsync();
     }
 }
