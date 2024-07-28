@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { LocalService } from '../../services/local.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MessageModel } from '../../models/message.model';
+import { Sentiment, sentimentToString } from '../../enums/sentiment';
 @Component({
   selector: 'app-chat',
   standalone: true,
@@ -35,6 +36,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   isLoading = true;
 
   @ViewChild('scroll') private scrollContainer!: ElementRef;
+
+  getSentiment(sentiment: Sentiment){
+    return sentimentToString(sentiment);
+  }
 
   sendMessage() {
     if (this.inputedMessage != "") {

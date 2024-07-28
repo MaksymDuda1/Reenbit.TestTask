@@ -77,7 +77,8 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy( builder =>
         {
-            builder.WithOrigins("https://reenbittesttaskchat.azurewebsites.net")
+            //builder.WithOrigins("https://reenbittesttaskchat.azurewebsites.net")
+            builder.WithOrigins("http://localhost:4200")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials();

@@ -160,6 +160,7 @@
   margin-bottom: 10px;
   flex-direction: row;
   max-width: 70%;
+  align-items: flex-start;
 }
 
 .message-content {
@@ -177,7 +178,6 @@
 .incoming {
   justify-content: flex-start;
   margin-right: auto;
-
 }
 
 .outgoing {
@@ -217,7 +217,7 @@
 
 .time_date {
   font-size: 10px;
-  color: #999;
+  color: black;
   margin-top: 5px;
   display: block;
 }
