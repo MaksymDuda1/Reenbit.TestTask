@@ -1,6 +1,7 @@
 using System.Security.Authentication;
 using Chatter.Application.Abstractions;
 using Chatter.Application.Exceptions;
+using Chatter.Application.Models;
 using Chatter.Domain.Dtos;
 using Chatter.Domain.Entities;
 using Microsoft.AspNetCore.Identity;

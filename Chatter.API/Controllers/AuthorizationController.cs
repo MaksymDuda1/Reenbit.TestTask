@@ -1,5 +1,6 @@
 using Chatter.Application.Abstractions;
 using Chatter.Application.Exceptions;
+using Chatter.Application.Models;
 using Chatter.Domain.Dtos;
 using Microsoft.AspNetCore.Mvc;
 

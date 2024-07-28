@@ -1,4 +1,4 @@
-namespace Chatter.Application.Exceptions;
+namespace Chatter.Application.Models;
 
 public class TokenApiModel
 {

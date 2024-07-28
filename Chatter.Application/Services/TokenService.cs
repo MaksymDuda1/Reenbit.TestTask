@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Chatter.Application.Abstractions;
 using Chatter.Application.Exceptions;
+using Chatter.Application.Models;
 using Chatter.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;

@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using Chatter.Application.Exceptions;
+using Chatter.Application.Models;
 using Chatter.Domain.Entities;
 
 namespace Chatter.Application.Abstractions;

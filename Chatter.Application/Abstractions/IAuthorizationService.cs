@@ -1,4 +1,5 @@
 using Chatter.Application.Exceptions;
+using Chatter.Application.Models;
 using Chatter.Domain.Dtos;
 using Microsoft.AspNetCore.Identity;
 
