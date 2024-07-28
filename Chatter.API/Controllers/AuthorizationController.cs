@@ -21,11 +21,4 @@ public class AuthorizationController(IAuthorizationService authorizationService,
     {
         return Ok(await authorizationService.Registration(request));
     }
-
-    [HttpGet]
-    public async Task<IActionResult> Logout()
-    {
-        var messages = await messageService.LoadMessages();
-        return Ok(messages);
-    }
 }

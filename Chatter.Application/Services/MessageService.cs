@@ -15,9 +15,8 @@ public class MessageService(
     {
         var messages = await unitOfWork.Messages
             .GetAllAsync(m => m.User);
-
-        var mapped = messages.Select(mapper.Map<MessageDto>).ToList();
-        return mapped;
+        
+        return messages.Select(mapper.Map<MessageDto>).ToList();
     }
 
     public async Task SaveMessage(MessageDto userMessage)

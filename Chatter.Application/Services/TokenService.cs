@@ -21,7 +21,6 @@ public class TokenService : ITokenService
 
     public TokenService(
         UserManager<User> userManager,
-        
         IConfiguration configuration)
     {
         this.userManager = userManager;
@@ -59,8 +58,7 @@ public class TokenService : ITokenService
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            throw new Exception(e.Message);
         }
     }
 
@@ -98,7 +96,7 @@ public class TokenService : ITokenService
         }
         catch (Exception ex)
         {
-            throw new AuthenticationException();
+            throw new Exception(ex.Message);
         }
     }
 
@@ -111,9 +109,9 @@ public class TokenService : ITokenService
             rng.GetBytes(randomNumber);
             return Convert.ToBase64String(randomNumber);
         }
-        catch
+        catch (Exception ex)
         {
-            throw new AuthenticationException();
+            throw new Exception(ex.Message);
         }
     }
 
@@ -127,12 +125,12 @@ public class TokenService : ITokenService
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret)),
             ValidateLifetime = false
         };
+        
         var tokenHandler = new JwtSecurityTokenHandler();
-        SecurityToken securityToken;
-        var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);
+        var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
         var jwtSecurityToken = securityToken as JwtSecurityToken;
-        if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
-                StringComparison.InvariantCultureIgnoreCase))
+        if (jwtSecurityToken == null ||
+            !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
             throw new SecurityTokenException("Invalid token");
         return principal;
     }
@@ -157,7 +155,7 @@ public class TokenService : ITokenService
         }
         catch (Exception ex)
         {
-            throw new AuthenticationException();
+            throw new Exception(ex.Message);
         }
     }
 }

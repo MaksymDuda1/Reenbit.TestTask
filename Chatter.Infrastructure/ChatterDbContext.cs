@@ -9,7 +9,6 @@ public class ChatterDbContext(DbContextOptions options)
     : IdentityDbContext<User, Role, Guid>(options)
 {
     public DbSet<Message> Messages { get; set; }
-
     
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {

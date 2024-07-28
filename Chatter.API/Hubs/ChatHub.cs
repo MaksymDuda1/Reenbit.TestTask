@@ -94,10 +94,9 @@ public class ChatHub : Hub
             
             await Clients.All.SendAsync("ReceiveMessage", botMessage);
             await GetConnectedUsers();
+            
+            await base.OnDisconnectedAsync(ex);
         }
-
-        await base.OnDisconnectedAsync(ex);
-        Console.WriteLine($"Disconnected {connectionId}");
     }
 
     public async Task GetConnectedUsers()

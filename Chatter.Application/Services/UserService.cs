@@ -1,5 +1,6 @@
 using AutoMapper;
 using Chatter.Application.Abstractions;
+using Chatter.Application.Exceptions;
 using Chatter.Domain.Abstractions;
 using Chatter.Domain.Dtos;
 
@@ -14,6 +15,9 @@ public class UserService(
         var user = await unitOfWork.Users
             .GetSingleByConditionAsync(u => u.Id == userId);
 
+        if (user == null)
+            throw new EntityNotFoundException("User not found");
+        
         return mapper.Map<UserDto>(user);
     }
 }
