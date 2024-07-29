@@ -31,9 +31,9 @@ builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<ISentimentAnalysisService, SentimentAnalysisService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-builder.Services.AddSingleton<IDictionary<string, string>>(opt =>
-    new Dictionary<string, string>());
-        
+builder.Services.AddSingleton<IDictionary<string, Guid>>(opt =>
+    new Dictionary<string, Guid>());
+
 builder.Services.AddIdentity<User, Role>(options =>
     {
         options.Password.RequiredLength = 8;
@@ -75,14 +75,13 @@ builder.Services.AddSignalR()
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy( builder =>
-        {
-            //builder.WithOrigins("https://reenbittesttaskchat.azurewebsites.net")
-            builder.WithOrigins("http://localhost:4200")
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials();
-        });
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("https://reenbittesttaskchat.azurewebsites.net")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
 });
 
 var app = builder.Build();

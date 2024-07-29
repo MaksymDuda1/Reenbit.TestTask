@@ -12,14 +12,14 @@ public class ChatHub : Hub
 {
     private readonly IServiceManager serviceManager;
     private readonly IConfiguration configuration;
-    private readonly IDictionary<string, string> connectedUsers;
+    private readonly IDictionary<string, Guid> connectedUsers;
     private readonly IMessageService messageService;
     private readonly ISentimentAnalysisService sentimentAnalysisService;
     private readonly IUserService userService;
 
     public ChatHub(
         IConfiguration configuration,
-        IDictionary<string, string> connectedUsers,
+        IDictionary<string, Guid> connectedUsers,
         IMessageService messageService,
         ISentimentAnalysisService sentimentAnalysisService,
         IUserService userService)
@@ -34,45 +34,43 @@ public class ChatHub : Hub
             .Build();
     }
 
-    public async Task JoinChat(string userId)
+    public async Task JoinChat(Guid userId)
     {
-        var connectionId = Context.ConnectionId;
-        if (connectedUsers.TryAdd(connectionId, userId))
+        if (connectedUsers.TryAdd(Context.ConnectionId, userId))
         {
+            var user = await userService.GetUserById(userId);
             await GetConnectedUsers();
+            
             var loadedMessages = await messageService.LoadMessages();
             await Clients.Caller.SendAsync("LoadMessages", loadedMessages);
-            
+
             var botMessage = new MessageDto()
             {
-                Text = $"{userId} just joined our room",
+                Text = $"{user.UserName} just joined our room",
                 Time = DateTime.Now,
                 Sentiment = Sentiment.Neutral,
                 UserId = Guid.Empty,
-                User = new UserDto(){UserName = "Chat bot"}
+                User = new UserDto() { UserName = "Chat bot" }
             };
-            
+
             await Clients.All.SendAsync("UserJoined", botMessage);
         }
     }
 
     public async Task SendMessage(string message)
     {
-        string connectionId = Context.ConnectionId;
-        
-        if (connectedUsers.TryGetValue(connectionId, out string userId))
+        if (connectedUsers.TryGetValue(Context.ConnectionId, out Guid userId))
         {
             var sentiment = sentimentAnalysisService.AnalyzeTheMessage(message);
-            var parsedUserId = Guid.Parse(userId);
             var userMessage = new MessageDto()
             {
                 Text = message,
                 Time = DateTime.Now.ToUniversalTime(),
                 Sentiment = sentiment,
-                UserId = parsedUserId,
-                User = await userService.GetUserById(parsedUserId)
+                UserId = userId,
+                User = await userService.GetUserById(userId)
             };
-            
+
             await Clients.All.SendAsync("ReceiveMessage", userMessage);
             await messageService.SaveMessage(userMessage);
         }
@@ -80,8 +78,7 @@ public class ChatHub : Hub
 
     public override async Task OnDisconnectedAsync(Exception ex)
     {
-        string connectionId = Context.ConnectionId;
-        if (connectedUsers.Remove(connectionId, out string userId))
+        if (connectedUsers.Remove(Context.ConnectionId, out Guid userId))
         {
             var botMessage = new MessageDto()
             {
@@ -89,19 +86,25 @@ public class ChatHub : Hub
                 Time = DateTime.Now,
                 Sentiment = Sentiment.Neutral,
                 UserId = Guid.Empty,
-                User = new UserDto(){UserName = "Chat bot"}
+                User = new UserDto() { UserName = "Chat bot" }
             };
-            
+
             await Clients.All.SendAsync("ReceiveMessage", botMessage);
             await GetConnectedUsers();
-            
+
             await base.OnDisconnectedAsync(ex);
         }
     }
 
     public async Task GetConnectedUsers()
     {
-        var users = connectedUsers.Values.ToList();
+        var userIds = connectedUsers.Values.ToList();
+        var users = new List<UserDto>();
+        foreach (var userId in userIds)
+        {
+            users.Add(await userService.GetUserById(userId));
+        }
+        
         await Clients.All.SendAsync("ReceiveConnectedUsers", users);
     }
 }

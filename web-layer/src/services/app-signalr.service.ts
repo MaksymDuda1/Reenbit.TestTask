@@ -3,7 +3,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import * as signalR from '@microsoft/signalr';
 import { MessageModel } from '../models/message.model';
 import { Sentiment } from '../enums/sentiment';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
+import { UserModel } from '../models/user.model';
 
 
 @Injectable({
@@ -16,9 +17,9 @@ export class AppSignalrService {
     .build();
 
   public messages$ = new BehaviorSubject<any>([]);
-  public connectedUsers$ = new BehaviorSubject<string[]>([]);
+  public connectedUsers$ = new BehaviorSubject<UserModel[]>([]);
   public messages: any[] = [];
-  public users: string[] = [];
+  public users: UserModel[] = [];
 
   constructor() {
 
@@ -53,7 +54,8 @@ export class AppSignalrService {
   }
 
   onReceiveConnectedUsers() {
-    this.hubConnection.on("ReceiveConnectedUsers", (users: any) => {
+    this.hubConnection.on("ReceiveConnectedUsers", (users: UserModel[]) => {
+      console.log(users);
       this.connectedUsers$.next(users);
     });
   }
@@ -61,11 +63,11 @@ export class AppSignalrService {
   onMessageReceive() {
     this.hubConnection.on("ReceiveMessage", (message: MessageModel) => {
       const newMessage = new MessageModel();
-        newMessage.text = message.text,
+      newMessage.text = message.text,
         newMessage.sentiment = message.sentiment,
         newMessage.time = message.time,
         newMessage.userId = message.userId
-        newMessage.user = message.user
+      newMessage.user = message.user
 
       this.messages = [...this.messages, newMessage];
       this.messages$.next(this.messages);
