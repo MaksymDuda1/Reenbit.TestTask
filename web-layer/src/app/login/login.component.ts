@@ -25,18 +25,13 @@ export class LoginComponent {
   loginModel = new LoginModel();
   errorMessage = "";
 
-  onLogin(){
-    this.authService.login(this.loginModel).subscribe((data : any) => {
+  onLogin() {
+    this.authService.login(this.loginModel).subscribe((data: any) => {
       this.localService.put(LocalService.AuthTokenName, data.accessToken);
-        let decodedData = this.jwtHelperService.decodeToken(data.accessToken);
-
-        if(decodedData.role == "Admin")
-          window.location.href = '/admin';
-        else
-          window.location.href = '/home';
+        window.location.href = '/home';
     },
-    (errorResponse: any) => {
-      this.errorMessage = errorResponse;
+      (errorResponse: any) => {
+        this.errorMessage = errorResponse;
       })
   }
 }

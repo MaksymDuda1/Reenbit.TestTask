@@ -13,4 +13,6 @@ public interface ITokenService
     string GenerateRefreshToken();
     ClaimsPrincipal GetPrincipalFromExpiredTokenAsync(string token);
     Task<ClaimsIdentity> GenerateClaims(User user);
+    Task<TokenApiModel> GenerateToken(User user);
+
 }

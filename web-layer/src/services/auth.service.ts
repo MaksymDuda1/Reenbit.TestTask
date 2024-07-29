@@ -14,6 +14,11 @@ export class AuthService{
 
     private path: string = `${environment.url}/api/auth`;
 
+    isValid(username: string, email: string, password: string): boolean {
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailPattern.test(email) && password.length >= 8 && username.length > 0;
+    }
+
     login(loginModel: LoginModel): Observable<any> {
         return this.client.post<any>(`${this.path}/login`, loginModel);
     }

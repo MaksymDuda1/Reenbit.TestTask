@@ -1,2 +1,31 @@
-<button (click)="onJoinRoom()" class="btn btn-dark">Connect</button>
-{{errorMessage}}
+<div class="container">
+    <section class="Welocome words">
+        <h2>Welcome words</h2>
+        <p>Thank you for checking my test assignment.</p>
+        <p>Very interested in receiving feedback.</p>
+        <p class="text-danger">*Be patient - App service free tier is used</p>
+    </section>
+    <section class="project-info">
+        <h2>About the Project</h2>
+        <p>Hours spent: ~28</p>
+        <p>Frontend framework: Angular 18+ (standalone)</p>
+        <p>Database: PostgreSQL</p>
+        <p>Information sources:</p>
+        <ul>
+            <li>Microsoft documentation</li>
+            <li>Bootstrap documentation</li>
+            <li>Stack Overflow</li>
+            <li>Medium Youtube</li>
+            <li>ChatGpt(AI)</li>
+            <li>Claude(AI)</li>
+        </ul>
+    </section>
+    
+    <section class="connection-area">
+        <h2>Connect to the Chat</h2>
+        <div class="button-container">
+            <button (click)="onJoinRoom()" class="button-86" role="button">Connect</button>
+        </div>
+        <div class="error-message">{{errorMessage}}</div>
+    </section>
+</div>

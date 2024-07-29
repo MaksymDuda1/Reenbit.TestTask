@@ -8,6 +8,6 @@ namespace Chatter.Application.Abstractions;
 public interface IAuthorizationService
 {
     Task<TokenApiModel> Login(LoginDto loginDto);
-    Task<IdentityResult> Registration(RegistrationDto registrationDto);
+    Task<TokenApiModel> Registration(RegistrationDto registrationDto);
     Task Logout();
 }

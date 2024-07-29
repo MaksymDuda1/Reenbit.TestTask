@@ -28,25 +28,10 @@ public class AuthorizationService(
         if (!result.Succeeded)
             throw new CredentialValidationException("Wrong password");
 
-        var claims = await tokenService.GenerateClaims(userByEmail);
-
-        var accessToken = tokenService.CreateAccessToken(claims);
-        var refreshToken = tokenService.GenerateRefreshToken();
-
-        userByEmail.RefreshToken = refreshToken;
-        userByEmail.RefreshTokenExpiration =
-            DateTime.UtcNow.AddDays(Convert.ToInt16(configuration["JWT:RefreshTokenExpirationsDays"]));
-
-        await userManager.UpdateAsync(userByEmail);
-
-        return new TokenApiModel()
-        {
-            AccessToken = accessToken,
-            RefreshToken = refreshToken,
-        };
+        return await tokenService.GenerateToken(userByEmail);
     }
 
-    public async Task<IdentityResult> Registration(RegistrationDto registrationDto)
+    public async Task<TokenApiModel> Registration(RegistrationDto registrationDto)
     {
         var user = new User()
         {
@@ -57,12 +42,12 @@ public class AuthorizationService(
         var result = await userManager.CreateAsync(user, registrationDto.Password);
 
         if (!result.Succeeded)
-            throw new AuthenticationException("Wrong data");
+            throw new AuthenticationException("Invalid data");
 
         await userManager.AddToRoleAsync(user, "User");
         await userManager.UpdateAsync(user);
 
-        return result;
+        return await tokenService.GenerateToken(user);
     }
     
     public Task Logout()

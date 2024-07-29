@@ -80,9 +80,11 @@ public class ChatHub : Hub
     {
         if (connectedUsers.Remove(Context.ConnectionId, out Guid userId))
         {
+            var user = await userService.GetUserById(userId);
+
             var botMessage = new MessageDto()
             {
-                Text = $"{userId} has left the chat",
+                Text = $"{user.UserName} has left the chat",
                 Time = DateTime.Now,
                 Sentiment = Sentiment.Neutral,
                 UserId = Guid.Empty,

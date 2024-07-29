@@ -39,13 +39,11 @@ public class TokenService : ITokenService
 
             if (user is null)
                 throw new EntityNotFoundException("User Not Found");
-
-
+            
             if (user.RefreshToken != token.RefreshToken)
             {
                 throw new CredentialValidationException("Refresh token is not recognised.");
             }
-
 
             if (user.RefreshTokenExpiration <= DateTime.Now)
             {
@@ -158,5 +156,25 @@ public class TokenService : ITokenService
         {
             throw new Exception(ex.Message);
         }
+    }
+
+    public async Task<TokenApiModel> GenerateToken(User user)
+    {
+        var claims = await GenerateClaims(user);
+
+        var accessToken = CreateAccessToken(claims);
+        var refreshToken = GenerateRefreshToken();
+
+        user.RefreshToken = refreshToken;
+        user.RefreshTokenExpiration =
+            DateTime.UtcNow.AddDays(Convert.ToInt16(configuration["JWT:RefreshTokenExpirationsDays"]));
+
+        await userManager.UpdateAsync(user);
+
+        return new TokenApiModel()
+        {
+            AccessToken = accessToken,
+            RefreshToken = refreshToken,
+        };
     }
 }

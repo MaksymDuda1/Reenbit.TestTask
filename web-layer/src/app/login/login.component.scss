@@ -1,27 +1,26 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 160px; 
- 
-    padding: 40px; 
-    width: 480px; 
+    margin-top: 160px;
+    padding: 40px;
+    width: 480px;
 }
 
-.form-group{
-    margin-bottom: 20px; 
+.form-group {
+    margin-bottom: 20px;
 }
 
-.main-text{
-    text-align: center; 
+.main-text {
+    text-align: center;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
 }
 
-.btn-dark{
-    width: 100%; 
+.btn-dark {
+    width: 100%;
 }
 
 a {
@@ -29,8 +28,18 @@ a {
     color: grey;
 }
 
-a:hover{
-   text-decoration: none;
-   color: black; 
-   transition: color 0.5s ease; 
+a:hover {
+    text-decoration: none;
+    color: black;
+    transition: color 0.5s ease;
+}
+
+.centered-credentials {
+    opacity: 60%;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 440px;
 }
