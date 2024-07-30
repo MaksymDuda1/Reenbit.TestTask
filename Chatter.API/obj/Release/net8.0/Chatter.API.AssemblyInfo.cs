@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Chatter.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81abfc0418e2fb91d1e2ea4300be7b3e0ea0050a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c11e6549069119c6d34bd10980e98fdee7fd5fbc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Chatter.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Chatter.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

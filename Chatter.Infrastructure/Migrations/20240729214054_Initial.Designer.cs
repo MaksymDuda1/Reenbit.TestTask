@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Chatter.Infrastructure.Migrations
 {
     [DbContext(typeof(ChatterDbContext))]
-    [Migration("20240727095503_Initial")]
+    [Migration("20240729214054_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -28,7 +28,6 @@ namespace Chatter.Infrastructure.Migrations
             modelBuilder.Entity("Chatter.Domain.Entities.Message", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<int>("Sentiment")
@@ -45,8 +44,6 @@ namespace Chatter.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Messages");
                 });
@@ -80,13 +77,13 @@ namespace Chatter.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a633278b-8ec1-429e-9cfc-855201a41632"),
+                            Id = new Guid("a42d9e80-4c53-488b-9d36-9951aa1dc476"),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("ac0e5941-4f8c-4067-9986-6c99b2a8b462"),
+                            Id = new Guid("dc59f1e1-cf06-44d1-9e08-65d40b862922"),
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -273,7 +270,7 @@ namespace Chatter.Infrastructure.Migrations
                 {
                     b.HasOne("Chatter.Domain.Entities.User", "User")
                         .WithMany("Messages")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

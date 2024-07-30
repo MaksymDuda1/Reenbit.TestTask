@@ -33,7 +33,7 @@ public class TokenService : ITokenService
     {
         try
         {
-            var principal = GetPrincipalFromExpiredTokenAsync(token.AccessToken);
+            var principal = GetPrincipalFromExpiredToken (token.AccessToken);
             string username = principal.Identity.Name!;
             var user = await userManager.FindByNameAsync(username);
 
@@ -114,7 +114,7 @@ public class TokenService : ITokenService
         }
     }
 
-    public ClaimsPrincipal GetPrincipalFromExpiredTokenAsync(string token)
+    public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
     {
         var tokenValidationParameters = new TokenValidationParameters
         {

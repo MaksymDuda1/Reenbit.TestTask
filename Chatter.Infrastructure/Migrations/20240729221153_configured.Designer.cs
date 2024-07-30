@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Chatter.Infrastructure.Migrations
 {
     [DbContext(typeof(ChatterDbContext))]
-    [Migration("20240729193208_AfterdropMigration")]
-    partial class AfterdropMigration
+    [Migration("20240729221153_configured")]
+    partial class configured
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,13 +80,13 @@ namespace Chatter.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b57fe867-d8a6-4a70-9a44-f82b87e24f59"),
+                            Id = new Guid("777451ef-6a47-4368-82be-2839a3eefecc"),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("f780f695-fc00-4e5f-8f5d-851a9c3601cd"),
+                            Id = new Guid("01010b1c-8fd1-4c0c-ac6f-aec5654b964d"),
                             Name = "User",
                             NormalizedName = "USER"
                         });

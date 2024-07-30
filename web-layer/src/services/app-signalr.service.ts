@@ -16,20 +16,19 @@ export class AppSignalrService {
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
-  public messages$ = new BehaviorSubject<any>([]);
+  public messages$ = new BehaviorSubject<MessageModel[]>([]);
   public connectedUsers$ = new BehaviorSubject<UserModel[]>([]);
-  public messages: any[] = [];
+  public messages: MessageModel[] = [];
   public users: UserModel[] = [];
 
   constructor() {
-
-    this.onMessageReceive();
-
-    this.onReceiveConnectedUsers();
+    this.onUserJoined();
 
     this.onLoadMessages();
 
-    this.onUserJoined();
+    this.onReceiveConnectedUsers();
+
+    this.onMessageReceive();
   }
 
   onUserJoined() {
@@ -93,6 +92,7 @@ export class AppSignalrService {
   }
 
   public async leaveChat() {
+    this.messages = [];
     return this.hubConnection.stop();
   }
 }

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Chatter.Infrastructure.Migrations
 {
     [DbContext(typeof(ChatterDbContext))]
-    [Migration("20240727142231_ChangedSentimentFieldTypeToEnum")]
-    partial class ChangedSentimentFieldTypeToEnum
+    [Migration("20240729222052_Qwe")]
+    partial class Qwe
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,13 +80,13 @@ namespace Chatter.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e445cc08-646e-4d0d-aef7-82231892bc7a"),
+                            Id = new Guid("73c1639c-c953-436c-b0f7-6bb4f68fdf2f"),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("2ba96ca9-b337-46ae-898f-0e527ad72a05"),
+                            Id = new Guid("4974e8c0-0f02-4dde-a43e-cdda546c018e"),
                             Name = "User",
                             NormalizedName = "USER"
                         });

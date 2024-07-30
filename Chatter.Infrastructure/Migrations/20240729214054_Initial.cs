@@ -176,8 +176,8 @@ namespace Chatter.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Messages_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Messages_AspNetUsers_Id",
+                        column: x => x.Id,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -188,8 +188,8 @@ namespace Chatter.Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("a633278b-8ec1-429e-9cfc-855201a41632"), null, "Admin", "ADMIN" },
-                    { new Guid("ac0e5941-4f8c-4067-9986-6c99b2a8b462"), null, "User", "USER" }
+                    { new Guid("a42d9e80-4c53-488b-9d36-9951aa1dc476"), null, "Admin", "ADMIN" },
+                    { new Guid("dc59f1e1-cf06-44d1-9e08-65d40b862922"), null, "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -228,11 +228,6 @@ namespace Chatter.Infrastructure.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Messages_UserId",
-                table: "Messages",
-                column: "UserId");
         }
 
         /// <inheritdoc />

@@ -37,7 +37,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('scroll') private scrollContainer!: ElementRef;
 
-  getSentiment(sentiment: Sentiment){
+  getSentiment(sentiment: Sentiment) {
     return sentimentToString(sentiment);
   }
 

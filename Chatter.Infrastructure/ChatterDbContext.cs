@@ -21,21 +21,8 @@ public class ChatterDbContext(DbContextOptions options)
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ChatterDbContext).Assembly);
+        
         base.OnModelCreating(modelBuilder);
-
-        modelBuilder.Entity<Role>()
-            .HasData(
-                new Role()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Admin",
-                    NormalizedName = "ADMIN"
-                },
-                new Role()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "User",
-                    NormalizedName = "USER"
-                });
     }
 }

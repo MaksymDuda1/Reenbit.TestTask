@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Chatter.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class ChangedSentimentFieldTypeToEnum : Migration
+    public partial class Qwe : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,20 +16,20 @@ namespace Chatter.Infrastructure.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: new Guid("1a45d953-2e14-4ab8-97ca-6e247c8dbd6d"));
+                keyValue: new Guid("01010b1c-8fd1-4c0c-ac6f-aec5654b964d"));
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: new Guid("cac3f521-a571-45c9-8097-c129318bb10e"));
+                keyValue: new Guid("777451ef-6a47-4368-82be-2839a3eefecc"));
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("2ba96ca9-b337-46ae-898f-0e527ad72a05"), null, "User", "USER" },
-                    { new Guid("e445cc08-646e-4d0d-aef7-82231892bc7a"), null, "Admin", "ADMIN" }
+                    { new Guid("4974e8c0-0f02-4dde-a43e-cdda546c018e"), null, "User", "USER" },
+                    { new Guid("73c1639c-c953-436c-b0f7-6bb4f68fdf2f"), null, "Admin", "ADMIN" }
                 });
         }
 
@@ -39,20 +39,20 @@ namespace Chatter.Infrastructure.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: new Guid("2ba96ca9-b337-46ae-898f-0e527ad72a05"));
+                keyValue: new Guid("4974e8c0-0f02-4dde-a43e-cdda546c018e"));
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: new Guid("e445cc08-646e-4d0d-aef7-82231892bc7a"));
+                keyValue: new Guid("73c1639c-c953-436c-b0f7-6bb4f68fdf2f"));
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("1a45d953-2e14-4ab8-97ca-6e247c8dbd6d"), null, "User", "USER" },
-                    { new Guid("cac3f521-a571-45c9-8097-c129318bb10e"), null, "Admin", "ADMIN" }
+                    { new Guid("01010b1c-8fd1-4c0c-ac6f-aec5654b964d"), null, "User", "USER" },
+                    { new Guid("777451ef-6a47-4368-82be-2839a3eefecc"), null, "Admin", "ADMIN" }
                 });
         }
     }

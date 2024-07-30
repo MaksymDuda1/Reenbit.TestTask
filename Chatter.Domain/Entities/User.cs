@@ -10,5 +10,5 @@ public class User : IdentityUser<Guid>
     
     public string? PhotoPath { get; set; }
 
-    public List<Message> Messages { get; set; } = [];
+    public List<Message> Messages { get; set; } = new List<Message>();
 }

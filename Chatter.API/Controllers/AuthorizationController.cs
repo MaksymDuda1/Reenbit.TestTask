@@ -8,7 +8,7 @@ namespace Chatter.API.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public class AuthorizationController(IAuthorizationService authorizationService, IMessageService messageService)
+public class AuthorizationController(IAuthorizationService authorizationService)
     : ControllerBase
 {
     [HttpPost("login")]
@@ -21,11 +21,5 @@ public class AuthorizationController(IAuthorizationService authorizationService,
     public async Task<IActionResult> Registration(RegistrationDto request)
     {
         return Ok(await authorizationService.Registration(request));
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> GetMessages()
-    {
-        return Ok(await messageService.LoadMessages());
     }
 }
