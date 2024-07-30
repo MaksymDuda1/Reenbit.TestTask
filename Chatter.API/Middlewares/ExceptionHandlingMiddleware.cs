@@ -26,6 +26,9 @@ public class ExceptionHandlingMiddleware(
                 case AuthenticationException authenticationException:
                     code = StatusCodes.Status401Unauthorized;
                     break;
+                case CredentialValidationException credentialValidationException:
+                    code = StatusCodes.Status401Unauthorized;
+                    break;
                 default:
                     code = StatusCodes.Status500InternalServerError;
                     break;

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Chatter.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c11e6549069119c6d34bd10980e98fdee7fd5fbc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b629ff5295a0f4fec6e8c0be906d6759883a1b6d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Chatter.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Chatter.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

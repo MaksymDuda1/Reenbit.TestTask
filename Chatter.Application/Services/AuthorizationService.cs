@@ -19,7 +19,7 @@ public class AuthorizationService(
     {
         var userByEmail = await userManager.FindByEmailAsync(loginDto.Email);
 
-        if (userByEmail is null)
+        if (userByEmail == null)
             throw new EntityNotFoundException("No user with given email was found");
 
         var result = await signInManager
