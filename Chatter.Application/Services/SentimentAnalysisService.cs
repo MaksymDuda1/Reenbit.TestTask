@@ -2,21 +2,22 @@ using Azure;
 using Azure.AI.TextAnalytics;
 using Chatter.Application.Abstractions;
 using Chatter.Domain.Enums;
+using Chatter.Infrastructure.Extensions;
 using Microsoft.Extensions.Configuration;
 
 namespace Chatter.Application.Services;
 
 public class SentimentAnalysisService : ISentimentAnalysisService
 {
-    private readonly string languageKey;
-    private readonly string languageEndpoint;
     private readonly AzureKeyCredential credentials;
     private readonly Uri endpoint;
+    private readonly IConfiguration configuration;
 
     public SentimentAnalysisService(IConfiguration configuration)
     {
-        languageKey = configuration["AzureCognitiveService:Key"];
-        languageEndpoint = configuration["AzureCognitiveService:Endpoint"];
+        this.configuration = configuration;
+        var languageKey = KeyVaultExtension.GetConnectionSecret(this.configuration, "CognitiveServiceKey");
+        var languageEndpoint = KeyVaultExtension.GetConnectionSecret(this.configuration, "CognitiveServiceEndpoint");
 
         if (string.IsNullOrEmpty(languageKey) || string.IsNullOrEmpty(languageEndpoint))
         {
@@ -32,8 +33,9 @@ public class SentimentAnalysisService : ISentimentAnalysisService
         var client = new TextAnalyticsClient(endpoint, credentials);
         var documents = new List<string> { message };
 
-        AnalyzeSentimentResultCollection reviews = 
-            client.AnalyzeSentimentBatch(documents, options: new AnalyzeSentimentOptions { IncludeOpinionMining = true });
+        AnalyzeSentimentResultCollection reviews =
+            client.AnalyzeSentimentBatch(documents,
+                options: new AnalyzeSentimentOptions { IncludeOpinionMining = true });
 
         var result = reviews.FirstOrDefault()?.DocumentSentiment.Sentiment;
 

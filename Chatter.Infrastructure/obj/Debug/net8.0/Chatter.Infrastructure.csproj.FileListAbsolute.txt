@@ -14,3 +14,7 @@
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/Debug/net8.0/Chatter.Infrastructure.pdb
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/Debug/net8.0/ref/Chatter.Infrastructure.dll
 /home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/Debug/net8.0/Chatter.Infrastructure.sourcelink.json
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/bin/Debug/net8.0/Azure.Security.KeyVault.Secrets.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/bin/Debug/net8.0/Microsoft.Extensions.Configuration.AzureKeyVault.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/bin/Debug/net8.0/Azure.Security.KeyVault.Secrets.xml
+/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/bin/Debug/net8.0/Microsoft.Extensions.Configuration.AzureKeyVault.xml

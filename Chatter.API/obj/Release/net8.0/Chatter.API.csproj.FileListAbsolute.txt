@@ -144,3 +144,13 @@
 /home/maksi/Studying/Reenbit.TestTask/Chatter.API/obj/Release/net8.0/Chatter.API.pdb
 /home/maksi/Studying/Reenbit.TestTask/Chatter.API/obj/Release/net8.0/Chatter.API.genruntimeconfig.cache
 /home/maksi/Studying/Reenbit.TestTask/Chatter.API/obj/Release/net8.0/ref/Chatter.API.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Azure.Core.Experimental.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Azure.Security.KeyVault.Secrets.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Microsoft.Azure.KeyVault.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Microsoft.Azure.KeyVault.WebKey.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Microsoft.Azure.Services.AppAuthentication.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Microsoft.Extensions.Configuration.AzureKeyVault.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Microsoft.Rest.ClientRuntime.dll
+/home/maksi/Studying/Reenbit.TestTask/Chatter.API/bin/Release/net8.0/Microsoft.Rest.ClientRuntime.Azure.dll

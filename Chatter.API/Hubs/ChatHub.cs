@@ -3,6 +3,7 @@ using Chatter.Application.Models;
 using Chatter.Domain.Dtos;
 using Chatter.Domain.Entities;
 using Chatter.Domain.Enums;
+using Chatter.Infrastructure.Extensions;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Azure.SignalR.Management;
 
@@ -30,7 +31,11 @@ public class ChatHub : Hub
         this.sentimentAnalysisService = sentimentAnalysisService;
         this.userService = userService;
         serviceManager = new ServiceManagerBuilder()
-            .WithOptions(option => { option.ConnectionString = this.configuration["AzureSignalR:ConnectionString"]; })
+            .WithOptions(option =>
+            {
+                option.ConnectionString =
+                    KeyVaultExtension.GetConnectionSecret(this.configuration, "AzureSignalR");
+            })
             .Build();
     }
 
@@ -40,7 +45,7 @@ public class ChatHub : Hub
         {
             var user = await userService.GetUserById(userId);
             await GetConnectedUsers();
-            
+
             var loadedMessages = await messageService.LoadMessages();
             await Clients.Caller.SendAsync("LoadMessages", loadedMessages);
 
@@ -106,7 +111,7 @@ public class ChatHub : Hub
         {
             users.Add(await userService.GetUserById(userId));
         }
-        
+
         await Clients.All.SendAsync("ReceiveConnectedUsers", users);
     }
 }

@@ -28,6 +28,9 @@
             "projectReferences": {
               "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj": {
                 "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj"
+              },
+              "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj": {
+                "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj"
               }
             }
           }
@@ -49,6 +52,10 @@
             "Azure.AI.TextAnalytics": {
               "target": "Package",
               "version": "[5.3.0, )"
+            },
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.12.0, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
@@ -113,9 +120,92 @@
               "target": "Package",
               "version": "[5.3.0, )"
             },
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.12.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj",
+        "projectName": "Chatter.Infrastructure",
+        "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/Chatter.Infrastructure.csproj",
+        "packagesPath": "/home/maksi/.nuget/packages/",
+        "outputPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/maksi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj": {
+                "projectPath": "/home/maksi/Studying/Reenbit.TestTask/Chatter.Domain/Chatter.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.12.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             }
           },
           "imports": [
